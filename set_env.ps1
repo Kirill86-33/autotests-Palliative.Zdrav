@@ -1,0 +1,5 @@
+$env:TMS_URL = "https://test-it.crct.mosreg.ru"
+$env:TMS_PRIVATE_TOKEN = "NHUxUm1pVUxuUnZXUUhEalpi"
+$env:TMS_PROJECT_ID = "6e9f110c-4e73-486e-971c-ede535175c58"
+$env:TMS_CONFIGURATION_ID = "32fea2e0-437a-475a-9bf7-1e0685ab5966"
+$env:TMS_ADAPTER_MODE = "2"  
