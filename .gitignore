@@ -8,4 +8,4 @@ __pycache__/
 
 # IDE
 .vscode/
-.idea/
+.idea/__pycache__/
