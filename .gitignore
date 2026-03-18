@@ -1,11 +1,26 @@
-# Virtual environment
-.venv/
-venv/
-
-# Python cache
+# Byte-compiled / optimized / DLL files
 __pycache__/
 *.pyc
+*.pyo
+*.pyd
+
+# Virtual environments
+.venv/
+venv/
+ENV/
+env/
+
+# Pytest
+.pytest_cache/
+
+# Build artifacts
+build/
+dist/
+*.egg-info/
 
 # IDE
 .vscode/
-.idea/__pycache__/
+.idea/
+
+# Local configuration with secrets (if any)
+set_env.ps1
