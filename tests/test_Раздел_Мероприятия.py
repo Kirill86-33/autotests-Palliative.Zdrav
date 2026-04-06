@@ -1,5 +1,5 @@
 from testit_python_commons.decorators import externalId, displayName
-import time  # добавьте импорт в начало файла, если его нет
+import time  
 
 class TestCartEvents:
     @externalId("test_cart_events")
