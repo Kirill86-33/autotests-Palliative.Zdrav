@@ -6,3 +6,6 @@ class TestCartPalliativeInstitutions:
         card_palliative_institutions.open()
         card_palliative_institutions.click_cart_institutions()
         card_palliative_institutions.click_lpu_card()
+
+
+

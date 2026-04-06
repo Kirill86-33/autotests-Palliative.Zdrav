@@ -1,20 +1,22 @@
 from pages.base_page import BasePage
+from selenium.webdriver.support import expected_conditions as EC
+from selenium.webdriver.common.keys import Keys
+import time
 
 class SearchNewsPage(BasePage):
     PAGE_URL = 'https://palliative.zdrav.mosreg.ru/news'
 
+    SEARCH_FIELD = ("xpath", "//div//input[@placeholder='Поиск']")
+    # Более гибкий локатор: ищем h4, содержащий часть текста
+    CARD_NEW = ("xpath", "//h4[contains(text(), 'Новое пособие')]")
 
-    SEARCH_FIELD = ("xpath","//div//input[@placeholder='Поиск']") 
-    CARD_NEW = ("xpath","(//div//a[@class='MuiPaper-root MuiPaper-elevation MuiPaper-rounded MuiPaper-elevation1 css-1k57qih'])[1]") 
+    def enter_search_field(self, text):
+        field = self.wait.until(EC.visibility_of_element_located(self.SEARCH_FIELD))
+        field.clear()
+        field.send_keys(text)
+        field.send_keys(Keys.ENTER)   # запускаем поиск
+        time.sleep(1)  # небольшая пауза для загрузки результатов
 
-
-
-    def enter_search_field(self, text):  
-        input_search = self.driver.find_element(*self. SEARCH_FIELD)
-        input_search.send_keys(text)
-
-
-
-    def click_card_new(self):  
-        cart_new = self.driver.find_element(*self.CARD_NEW) # Добавляем явное ожидание
-        self.driver.execute_script("arguments[0].click();", cart_new)
+    def click_card_new(self):
+        card = self.wait.until(EC.element_to_be_clickable(self.CARD_NEW))
+        self.driver.execute_script("arguments[0].click();", card)

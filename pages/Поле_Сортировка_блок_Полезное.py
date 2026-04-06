@@ -1,5 +1,5 @@
 from pages.base_page import BasePage
-
+from selenium.webdriver.support import expected_conditions as EC
 
 
 class SortingPage(BasePage):
@@ -10,11 +10,18 @@ class SortingPage(BasePage):
 
     
     
+    
+    def wait_for_page_load(self):
+        # Ждём, пока элемент сортировки станет видимым
+        self.wait.until(EC.visibility_of_element_located(self.BUTTON_SORTING))
+
+
     def click_button_sorting(self):
-       button_sorting = self.driver.find_element(*self.BUTTON_SORTING)
-       self.driver.execute_script("arguments[0].click();", button_sorting)
+        self.wait_for_page_load()
+        btn = self.wait.until(EC.element_to_be_clickable(self.BUTTON_SORTING))
+        self.driver.execute_script("arguments[0].click();", btn)
 
 
     def click_button_by_name(self):
-       button_name = self.driver.find_element(*self.BUTTON_BY_NAME)
-       self.driver.execute_script("arguments[0].click();", button_name)
+        btn = self.wait.until(EC.element_to_be_clickable(self.BUTTON_BY_NAME))
+        self.driver.execute_script("arguments[0].click();", btn)

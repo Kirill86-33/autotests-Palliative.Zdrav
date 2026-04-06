@@ -1,4 +1,9 @@
 from pages.base_page import BasePage
+from selenium.webdriver.support import expected_conditions as EC
+
+
+
+
 
 class SearchUsefulPage(BasePage):
     PAGE_URL = 'https://palliative.zdrav.mosreg.ru/library'
@@ -9,12 +14,15 @@ class SearchUsefulPage(BasePage):
 
 
 
-    def enter_search_field (self, text):  
-        input_search = self.driver.find_element(*self. SEARCH_FIELD)
-        input_search.send_keys(text)
+
+    def enter_search_field(self, text):
+        field = self.wait.until(EC.visibility_of_element_located(self.SEARCH_FIELD))
+        field.clear()
+        field.send_keys(text)
 
 
 
-    def click_card_useful (self):  
-        cart_useful= self.driver.find_element(*self.CARD_USEFUL) # Добавляем явное ожидание
-        self.driver.execute_script("arguments[0].click();", cart_useful)
+
+    def click_card_useful(self):
+        card = self.wait.until(EC.element_to_be_clickable(self.CARD_USEFUL))
+        self.driver.execute_script("arguments[0].click();", card)
